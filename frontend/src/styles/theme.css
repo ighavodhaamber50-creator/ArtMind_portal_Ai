@@ -1,0 +1,195 @@
+/* ArtMind design system: the colour wall.
+   Tokens first, then Bootstrap overrides, then the site chrome. */
+
+:root {
+  /* Wall and text */
+  --chalk: #f7f7fb;
+  --paper: #ffffff;
+  --ink: #1b1740;
+  --ink-soft: #4a4670;
+  --line: #dcdeea;
+
+  /* Primary action */
+  --vermilion: #f2492e;
+  --vermilion-deep: #d63a21;
+
+  /* One pigment per category */
+  --abstract: #3342e8;
+  --landscape: #0e9f7e;
+  --flower: #e8447d;
+  --nature: #6e9b1f;
+  --figurative: #f5a400;
+  --religious: #7a4dd8;
+
+  --font-display: 'Syne', 'Segoe UI', system-ui, sans-serif;
+  --font-text: 'Newsreader', Georgia, 'Times New Roman', serif;
+
+  /* Make Bootstrap use our tokens */
+  --bs-body-bg: var(--chalk);
+  --bs-body-color: var(--ink);
+  --bs-body-font-family: var(--font-text);
+  --bs-body-font-size: 1.0625rem;
+  --bs-body-line-height: 1.65;
+  --bs-secondary-color: var(--ink-soft);
+  --bs-border-color: var(--line);
+  --bs-link-color-rgb: 51, 66, 232;
+  --bs-link-hover-color-rgb: 36, 48, 190;
+}
+
+/* A tile or card sets --pigment (and a readable text colour) from data-category */
+[data-category='abstract'] { --pigment: var(--abstract); --on-pigment: #fff; }
+[data-category='landscape'] { --pigment: var(--landscape); --on-pigment: var(--ink); }
+[data-category='flower'] { --pigment: var(--flower); --on-pigment: var(--ink); }
+[data-category='nature'] { --pigment: var(--nature); --on-pigment: var(--ink); }
+[data-category='figurative'] { --pigment: var(--figurative); --on-pigment: var(--ink); }
+[data-category='religious'] { --pigment: var(--religious); --on-pigment: #fff; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+h1, .h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; }
+h2, .h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+h3, .h3 { font-size: 1.35rem; }
+.lead { font-size: 1.25rem; line-height: 1.55; }
+
+::selection { background: var(--figurative); color: var(--ink); }
+
+:focus-visible {
+  outline: 3px solid var(--abstract);
+  outline-offset: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.6rem 1.35rem;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-sm { padding: 0.4rem 1rem; }
+
+.btn-brand {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--vermilion);
+  --bs-btn-border-color: var(--vermilion);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--vermilion-deep);
+  --bs-btn-hover-border-color: var(--vermilion-deep);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--vermilion-deep);
+  --bs-btn-active-border-color: var(--vermilion-deep);
+  --bs-btn-disabled-bg: var(--vermilion);
+  --bs-btn-disabled-border-color: var(--vermilion);
+}
+
+.btn-dark {
+  --bs-btn-bg: var(--ink);
+  --bs-btn-border-color: var(--ink);
+  --bs-btn-hover-bg: #2b2561;
+  --bs-btn-hover-border-color: #2b2561;
+  --bs-btn-active-bg: #2b2561;
+  --bs-btn-active-border-color: #2b2561;
+  --bs-btn-disabled-bg: var(--ink);
+  --bs-btn-disabled-border-color: var(--ink);
+}
+
+.btn-outline-dark {
+  --bs-btn-color: var(--ink);
+  --bs-btn-border-color: var(--ink);
+  --bs-btn-hover-bg: var(--ink);
+  --bs-btn-hover-border-color: var(--ink);
+  --bs-btn-active-bg: var(--ink);
+  --bs-btn-active-border-color: var(--ink);
+}
+
+/* ---------- Forms ---------- */
+.form-control, .form-select {
+  border-radius: 12px;
+  border-color: var(--line);
+  padding: 0.65rem 0.9rem;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--abstract);
+  box-shadow: 0 0 0 0.25rem rgba(51, 66, 232, 0.16);
+}
+.form-label { font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; }
+
+/* ---------- Pigment stripe (top of every page, and in the footer) ---------- */
+.pigment-bar { display: flex; height: 6px; }
+.pigment-bar span { flex: 1; }
+.pigment-bar span:nth-child(1) { background: var(--abstract); }
+.pigment-bar span:nth-child(2) { background: var(--landscape); }
+.pigment-bar span:nth-child(3) { background: var(--flower); }
+.pigment-bar span:nth-child(4) { background: var(--nature); }
+.pigment-bar span:nth-child(5) { background: var(--figurative); }
+.pigment-bar span:nth-child(6) { background: var(--religious); }
+
+/* ---------- Navbar: white, with a colour per page ---------- */
+.site-header { z-index: 1030; background: #fff; }
+.site-nav { background: #fff; border-bottom: 1px solid var(--line); padding-block: 0.6rem; }
+
+.site-nav .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* Three paint circles that blend where they overlap */
+.brand-mark { position: relative; display: inline-block; width: 46px; height: 22px; }
+.brand-mark i {
+  position: absolute;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
+.brand-mark i:nth-child(1) { left: 0; background: var(--abstract); }
+.brand-mark i:nth-child(2) { left: 12px; background: var(--flower); }
+.brand-mark i:nth-child(3) { left: 24px; background: var(--figurative); }
+
+.site-nav .nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  transition: color 0.15s, background-color 0.15s;
+}
+.site-nav .nav-link:hover { background: color-mix(in srgb, var(--tone, var(--ink)) 14%, #fff); color: var(--ink); }
+.site-nav .nav-link.active { background: var(--tone, var(--ink)); color: var(--on-tone, #fff); }
+
+.tone-home { --tone: var(--vermilion); --on-tone: #fff; }
+.tone-gallery { --tone: var(--abstract); --on-tone: #fff; }
+.tone-assistant { --tone: var(--flower); --on-tone: var(--ink); }
+.tone-analyze { --tone: var(--landscape); --on-tone: var(--ink); }
+.tone-dashboard { --tone: var(--religious); --on-tone: #fff; }
+.tone-analytics { --tone: var(--figurative); --on-tone: var(--ink); }
+
+.site-nav .navbar-text { color: var(--ink-soft); font-style: italic; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--ink); color: rgba(255, 255, 255, 0.7); }
+.site-footer a { color: rgba(255, 255, 255, 0.85); text-decoration: none; }
+.site-footer a:hover { color: #fff; text-decoration: underline; }
+.site-footer .footer-brand { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

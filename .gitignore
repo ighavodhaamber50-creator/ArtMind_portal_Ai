@@ -1,0 +1,48 @@
+# Environment variables and secrets
+
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+
+venv/
+.venv/
+
+# Python cache files
+
+**pycache**/
+*.py[cod]
+
+# Django logs
+
+*.log
+
+# Local databases
+
+*.sqlite3
+*.sqlite3-journal
+
+# Frontend dependencies
+
+node_modules/
+
+# Frontend build output
+
+dist/
+
+# Testing and cache files
+
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Editor and operating system files
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+backend/media/user_artworks/
+backend/media/user_artworks/
+backend/media/uploads/
